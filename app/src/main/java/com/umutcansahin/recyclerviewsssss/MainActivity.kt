@@ -2,6 +2,8 @@ package com.umutcansahin.recyclerviewsssss
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.jackandphantom.carouselrecyclerview.CarouselLayoutManager
 import com.umutcansahin.recyclerviewsssss.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +30,18 @@ class MainActivity : AppCompatActivity() {
             carouselRecyclerview.set3DItem(true)
             carouselRecyclerview.setAlpha(true)
             carouselRecyclerview.setInfinite(true)
+            val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
+            val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
+
+            /**ORTAYA GELEN ITEM DİNLER VE O ITEMIN NAME'INI BASAR*/
+            carouselRecyclerview.setItemSelectListener(object : CarouselLayoutManager.OnSelected {
+                override fun onItemSelected(position: Int) {
+                    Toast.makeText(this@MainActivity, imageList[position].name, Toast.LENGTH_SHORT).show()
+                }
+            })
+
+
+
         }
     }
 }
